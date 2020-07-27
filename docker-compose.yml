@@ -12,21 +12,29 @@ services:
             - service_4
             - service_2
             - service_3
+        deploy:
+            replicas: 3
 
     service_2:        
         image: tbytautas/service_2        
         networks:
             - tadas_network
+        deploy:
+            replicas: 3
 
     service_3:        
         image: tbytautas/service_3        
         networks:
             - tadas_network
+        deploy:
+            replicas: 3
 
     service_4:        
         image: tbytautas/service_4        
         networks:
             - tadas_network
+        deploy:
+            replicas: 3
 
 networks:
     tadas_network:
