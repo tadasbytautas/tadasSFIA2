@@ -1,0 +1,34 @@
+version: "3.7"
+
+services:
+
+    service_1:        
+        image: tbytautas/service_1        
+        ports:
+            - "5000:5000"
+        networks:
+            - tadas_network
+        depends_on:
+            - service_4
+            - service_2
+            - service_3
+
+    service_2:        
+        image: tbytautas/service_2        
+        networks:
+            - tadas_network
+
+    service_3:        
+        image: tbytautas/service_3        
+        networks:
+            - tadas_network
+
+    service_4:        
+        image: tbytautas/service_4        
+        networks:
+            - tadas_network
+
+networks:
+    tadas_network:
+        driver: overlay
+    
