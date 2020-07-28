@@ -15,6 +15,16 @@ pipeline {
 
         }
 
+        stage('Docker Swarm Init') {
+
+            steps {
+                
+                sh './scripts/docker_swarm_init.sh'
+
+            }
+
+        }
+
     }
 
 }
