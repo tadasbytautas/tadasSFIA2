@@ -1,3 +1,3 @@
 #!/bin/bash
 
-touch tadas.txt
+touch tad.txt
