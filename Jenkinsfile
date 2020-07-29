@@ -26,11 +26,21 @@ pipeline {
 
         }
 
-        stage('deploy Stack') {
+        stage('Deploy Stack') {
 
             steps {
                 
                 sh './scripts/stack_deploy.sh'
+
+            }
+
+        }
+
+        stage('Update Stack') {
+
+            steps {
+                
+                sh './scripts/stack_update.sh'
 
             }
 
