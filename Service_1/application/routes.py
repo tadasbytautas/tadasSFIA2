@@ -3,6 +3,7 @@ from flask import render_template, request
 import requests
 import random
 
+
 @app.route('/', methods=['GET'])
 def home():
     response = requests.get('http://service_4:5003/randomword')
