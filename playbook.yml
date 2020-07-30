@@ -1,16 +1,8 @@
 ---
-- name: NGINX
+- name: Install Docker-CE
   hosts: swarm-worker
   become: true
-  tasks:
-  - name: Install NGINX
-    apt:
-      name: nginx
-      state: latest
-      update_cache: true
-  - name: Start NGINX Service
-    service:
-      name: nginx
-      state: started
+  roles:
+    - docker_installation
 
-# run assible command "ansible-playbook playbook.yml"
+
