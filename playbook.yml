@@ -5,4 +5,16 @@
   roles:
     - docker-installation
 
+- name: Install Docker-CE on Manager
+  hosts: localhost
+  connection: local
+  become: true
+  roles: 
+    - docker-installation
+    - docker-swarm-init
 
+- name: Add worker to manager 
+  hosts: swarm-worker
+  become: true
+  roles:
+    - docker-swarm-add-workers

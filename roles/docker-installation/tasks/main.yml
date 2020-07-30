@@ -1,5 +1,5 @@
 ---
-- name: Install docker dependency 1
+- name: Install docker dependencies
   apt:
     name: ['apt-transport-https','ca-certificates','curl','software-properties-common']
     state: latest
