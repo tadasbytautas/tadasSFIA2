@@ -3,6 +3,6 @@
   hosts: swarm-worker
   become: true
   roles:
-    - docker_installation
+    - docker-installation
 
 
