@@ -33,7 +33,7 @@ def home():
     response = requests.get('http://service_4:5003/randomword')
     print(response)
     sentence = response.text
-    post_data = nickname_gen.query.all()
+    # post_data = nickname_gen.query.all()
     db.session.add()
     db.session.commit()   
-    return render_template('index.html', sentence = sentence, title = 'Home', post=post_data)
+    return render_template('index.html', sentence = sentence, title = 'Home')
