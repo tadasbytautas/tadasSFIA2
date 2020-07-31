@@ -3,7 +3,7 @@ from flask import render_template, request
 from flask_sqlalchemy import SQLAlchemy
 import requests
 import random
-import os 
+from os import environ 
 
 app.config['SECRET_KEY'] = environ.get('SECRET_KEY')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
