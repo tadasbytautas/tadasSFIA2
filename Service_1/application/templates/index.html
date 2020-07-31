@@ -16,6 +16,15 @@
 
             <button onclick="window.location.reload();">
                 Generate Nickname
+                <div class="form-group">
+                    {{ form.submit }}
+                </div>
             </button>
+            {% for post in sfia %}
+                <div>
+                    <h3>{{ post.response }}</h3>                        
+                </div>
+            {% endfor %}        
+            </div>
         </body>
     </html>    
