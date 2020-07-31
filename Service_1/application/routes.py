@@ -3,6 +3,7 @@ from flask import render_template, request
 from flask_sqlalchemy import SQLAlchemy
 import requests
 import random
+import os
 from os import environ 
 
 app.config['SECRET_KEY'] = environ.get('SECRET_KEY')
@@ -26,7 +27,7 @@ class nickname_gen(db.Model):
 
     def __repr__(self):
         return ''.join([
-            'ID: ', str(self.id), '\r\n',
+            'ID: ', str(self.id), '\n',
             'response: ', str(self.response)
         ])
 
@@ -35,7 +36,9 @@ def home():
     response = requests.get('http://service_4:5003/randomword')
     print(response)
     sentence = response.text
-    # post_data = nickname_gen.query.all()
+    new_input = new_table(
+        response=sentence
+    )
     db.session.add()
     db.session.commit()   
     return render_template('index.html', sentence = sentence, title = 'Home')
