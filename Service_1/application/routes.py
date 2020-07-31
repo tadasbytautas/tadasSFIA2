@@ -39,6 +39,7 @@ def home():
     new_input = new_table(
         response=sentence
     )
-    db.session.add()
+    print(sentence)
+    db.session.add(new_input)
     db.session.commit()   
     return render_template('index.html', sentence = sentence, title = 'Home')
