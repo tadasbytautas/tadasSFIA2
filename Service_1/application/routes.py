@@ -18,6 +18,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://' + \
                                         '/' + \
                                         environ.get('MYSQL_DB_NAME')
 
+db = SQLAlchemy(app)
+
 class nickname_gen(db.Model):
     id = db.Column(db.Integer, primary_key=True)    
     response = db.Column(db.String(50), nullable=False)
