@@ -36,7 +36,7 @@ def home():
     response = requests.get('http://service_4:5003/randomword')
     print(response)
     sentence = response.text
-    new_input = new_table(
+    new_input = nickname_gen(
         response=sentence
     )
     print(sentence)
