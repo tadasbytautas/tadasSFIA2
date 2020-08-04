@@ -7,3 +7,4 @@ if [[ "$(docker stack services SFIA2 2> /dev/null)" == "" ]]; then
 else
     docker stack ls
 fi 
+
