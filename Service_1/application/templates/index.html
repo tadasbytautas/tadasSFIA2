@@ -17,6 +17,15 @@
             <button onclick="window.location.reload();">
                 Generate Nickname
             </button>
+            <table>
+                {% for dnd in dnd %}                    
+                    <tr>
+                        <td>{{ nickname_gen.id }}</td>
+                        <td>{{ nickname_gen.responese }}</td>
+                    </tr>
+                    </div>
+                {% endfor %}
+                </table>
             </div>
         </body>
     </html>    
