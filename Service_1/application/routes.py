@@ -33,7 +33,7 @@ class nickname_gen(db.Model):
 
 @app.route('/', methods=['GET','POST'])
 def home():
-    response = requests.get('http://service_4:5003/randomword')
+    response = requests.get('http://localhost:5003/randomword')
     print(response)
     sentence = response.text
     new_input = nickname_gen(
