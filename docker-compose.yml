@@ -45,10 +45,7 @@ services:
             replicas: 3
     
     nginx:
-        build:
-            context: ./NGINX
-            dockerfile: Dockerfile
-        image: nginx
+        image: tbytautas/nginxsfia2
         ports:
             - "80:80"
         networks:
