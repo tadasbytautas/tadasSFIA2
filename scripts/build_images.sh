@@ -20,8 +20,9 @@ docker build -t tbytautas/service_4:latest ./Service_4
 #Pushes new built image to docker hub
 docker push tbytautas/service_4
 
-# ------if statement to chekc if image alreadey exists localy------
-#Build service_4 image if it does not exist localy
-# if [[ "$(docker images -q tbytautas/service_4:latest 2> /dev/null)" == "" ]]; then
-#     docker build -t tbytautas/service_4 ./Service_4
-# fi 
+#Build clean version of nginx image
+docker build -t tbytautas/nginx:latest ./NGINX
+#Pushes new built image to docker hub
+docker push tbytautas/nginx
+
+ 

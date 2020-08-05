@@ -43,6 +43,23 @@ services:
             - tadas_network
         deploy:
             replicas: 3
+    
+    nginx:
+        build:
+            context: ./NGINX
+            dockerfile: Dockerfile
+        image: thcqa/nginxchar
+        ports:
+            - "80:80"
+        networks:
+            - character_hive
+        depends_on:
+            - frontend
+            - skill
+            - modifier
+            - title
+        deploy:
+            replicas: 3
 
 networks:
     tadas_network:
