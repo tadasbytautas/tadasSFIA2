@@ -3,9 +3,7 @@ version: "3.7"
 services:
 
     service_1:        
-        image: tbytautas/service_1        
-        # ports:
-            # - "5000:5000"
+        image: tbytautas/service_1
         networks:
             - tadas_network
         environment:
