@@ -20,9 +20,4 @@ docker build -t tbytautas/service_4:latest ./Service_4
 #Pushes new built image to docker hub
 docker push tbytautas/service_4
 
-#Build clean version of nginx image
-docker build -t tbytautas/nginx:latest ./NGINX
-#Pushes new built image to docker hub
-docker push tbytautas/nginx
-
  
