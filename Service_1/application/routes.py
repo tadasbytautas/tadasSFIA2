@@ -39,7 +39,7 @@ def home():
     new_input = nickname_gen(
         response=sentence
     )
-    nickname_data = nickname_gen.query.all()
+    nickname_data = nickname_gen.query.order_by(nickname_gen.id.desc())
     print(sentence)
     db.session.add(new_input)
     db.session.commit()   
