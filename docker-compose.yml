@@ -56,7 +56,7 @@ services:
             - service_3
             - service_4
         deploy:
-            replicas: 1
+            replicas: 3
 
 networks:
     tadas_network:
