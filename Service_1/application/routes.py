@@ -39,8 +39,8 @@ def home():
     new_input = nickname_gen(
         response=sentence
     )
-    nickname_gen = nickname_gen.query.order_by(nickname_gen.id.desc())
+    nickname_data = nickname_gen.query.all()
     print(sentence)
     db.session.add(new_input)
     db.session.commit()   
-    return render_template('index.html', sentence = sentence, nickname_gen = nickname_gen, title = 'Home')
+    return render_template('index.html', sentence = sentence, nickname_gen = nickname_data, title = 'Home')
