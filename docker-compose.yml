@@ -48,16 +48,16 @@ services:
         build:
             context: ./NGINX
             dockerfile: Dockerfile
-        image: thcqa/nginxchar
+        image: tbytautas/nginx
         ports:
             - "80:80"
         networks:
-            - character_hive
+            - tadas_network
         depends_on:
-            - frontend
-            - skill
-            - modifier
-            - title
+            - service_1
+            - service_2
+            - service_3
+            - service_4
         deploy:
             replicas: 3
 
