@@ -1,6 +1,6 @@
 - name: Add worker to manager node
   shell: 
     - "docker swarm join --token {{ hostvars['token']['value'] }} {{ hostvars['manager_hostname']['value'] }}:2377"
-    - "docker system prune -y"
+    - "docker system prune -f"
   ignore_errors: true
   tags: swarm
