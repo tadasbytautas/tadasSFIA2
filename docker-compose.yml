@@ -48,7 +48,7 @@ services:
         build:
             context: ./NGINX
             dockerfile: Dockerfile
-        image: tbytautas/nginx
+        image: nginx
         ports:
             - "80:80"
         networks:
