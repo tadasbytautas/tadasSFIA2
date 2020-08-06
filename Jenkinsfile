@@ -21,7 +21,7 @@ pipeline {
         stage('Builing Images') {
 
             steps {
-                4
+                
                 sh 'chmod +x ./scripts/*.sh'
                 // build images and pushes them to dockerhub
                 sh './scripts/build_images.sh'
