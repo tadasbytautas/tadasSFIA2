@@ -45,7 +45,7 @@ Service 3 - another backend service which does almost same as Service 2, only di
 Service 4 - Combines output of Service 2 and Service 3. Service 1 sends GET request to Service 4 and represens outcome to the user on the main page.
 
 
-![Services relationship](https://imgur.com/2GGDOg8.jpg)
+![Services relationship](./images/service.png)
 
 ## Asana Board
 In order to keep track of my project and it's progress, I used an Asana board. This board also marks the items needed for the Minimum Viable Product (MVP). This also includes completed user stories to allow me to see what I would like the user to be able to do at bare minimum.
