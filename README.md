@@ -50,17 +50,24 @@ Service 4 - Combines output of Service 2 and Service 3. Service 1 sends GET requ
 
 
 ## Trello Board
-For tracking project progress Trello board was used. Picture below was taken at the beginning of the project.
+For tracking project progress Trello board was used. Trello is free tool which I utilised on SFIA1 therefor it made sense to use it again. Picture below was taken at the beginning of the project.
 
 ![](./images/trello1.png)
 
-## Database
-This application only requires a simple table to store information. Data is saved even after the application is brought down and back up via the use of a volume. The following table is used to store data:
+Second picture was taken towards end of SFIA2 project which changed quite a bit.
 
-![DATA](https://imgur.com/HucMfnU.jpg)
+![](./images/trello2.png)
+
+## Database
+One of the application requirements was to make sure data is persistent, for this MySQL virtual machine was used. Simple table nickname_gen was created and utilised for this task. 
+
+![](./images/table.png)
 
 ## CI Pipeline  
-This first diagram is what I initially imagined the CI Pipeline to look like. 
+
+First Diagriam represnts idea of first implementation of CI pipeline. 
+
+______________________________________________________
 
 ![First CI Pipeline](https://imgur.com/GKH1nr8.jpg)
 
@@ -103,45 +110,6 @@ Finally, Jenkins will deploy the application from the swarm manager machine usin
 A failed Pipeline Job will be displayed as such: 
 
 ![Failed Pipeline](https://imgur.com/SdeAent.jpg)
-
-## Testing
-As part of the project requirement, I also carried out unit testing on both implementations of my application.  
-
-Here you can see the coverage of my tests for each service.
-
-### App 1 Service 1
-
-![1.1](https://imgur.com/Ef0pwze.jpg)
-
-### App 1 Service 2
-
-![1.2](https://imgur.com/nmywWRp.jpg)
-
-### App 1 Service 3
-
-![1.3](https://imgur.com/tNjVRv7.jpg)
-
-### App 1 Service 4
-
-![1.4](https://imgur.com/wvn63Gs.jpg)
-
-
-### App 2 Service 1
-
-![2.1](https://imgur.com/uo1DyeI.jpg)
-
-### App 2 Service 2
-
-![2.2](https://imgur.com/80aeTyK.jpg)
-
-### App 2 Service 3
-
-![2.3](https://imgur.com/QZbZjIY.jpg)
-
-
-### App 2 Service 4
-
-![2.4](https://imgur.com/Z97r0uQ.jpg)
 
 ## Risk Assessment
 I also carried out a risk assessment identifying the potential risks for this project and any mitigation in place. 
