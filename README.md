@@ -44,15 +44,15 @@ Service 3 - another backend service which does almost same as Service 2, only di
 
 Service 4 - Combines output of Service 2 and Service 3. Service 1 sends GET request to Service 4 and represens outcome to the user on the main page.
 
+<br>
 
-![Services relationship](./images/service.png)
+![](./images/service.png)
 
-## Asana Board
-In order to keep track of my project and it's progress, I used an Asana board. This board also marks the items needed for the Minimum Viable Product (MVP). This also includes completed user stories to allow me to see what I would like the user to be able to do at bare minimum.
 
-![Asana Board](https://imgur.com/eaIHDqz.jpg)
+## Trello Board
+For tracking project progress Trello board was used. Picture below was taken at the beginning of the project.
 
-https://app.asana.com/0/1181637805113345/board
+![](./images/trello1.png)
 
 ## Database
 This application only requires a simple table to store information. Data is saved even after the application is brought down and back up via the use of a volume. The following table is used to store data:
