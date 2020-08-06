@@ -1,4 +1,3 @@
----
 - name: Install Docker Dependencies
   apt:
     name: ['apt-transport-https','ca-certificates','curl','software-properties-common']
