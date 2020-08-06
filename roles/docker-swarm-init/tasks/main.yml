@@ -34,6 +34,10 @@
     name: "manager_hostname"
     value: "{{ manager_hostname.stdout }}"
 
+- name: Removing unused Images/Containers/Networks  
+  shell: docker system prune -f
+  tags: swarm
+
 
 # - name: add worker to manager node
 #   shell: echo {{ hostvars['token']['value'] }}
