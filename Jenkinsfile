@@ -30,8 +30,7 @@ pipeline {
 
             steps {
                 
-                sh './scripts/stack_deploy.sh'
-                sh './scripts/ansible_execute.sh'
+                sh './scripts/stack_deploy.sh'                
 
             }
 
