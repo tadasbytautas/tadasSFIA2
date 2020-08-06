@@ -34,10 +34,9 @@
     name: "manager_hostname"
     value: "{{ manager_hostname.stdout }}"
 
-- name: Docker Prune
-  add_host:
-    shell: docker system prune -f
-    tags: swarm
+- name: Docker Prune  
+  shell: docker system prune -f
+  tags: swarm
 
 # - name: add worker to manager node
 #   shell: echo {{ hostvars['token']['value'] }}
