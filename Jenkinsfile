@@ -4,11 +4,24 @@ pipeline {
 
     stages {
 
-        stage('Build Images') {
+        stage('Installing Dependecies') {
 
             steps {
 
                 sh 'chmod +x ./scripts/*.sh'
+                // build images and pushes them to dockerhub
+                sh './scripts/ansible_execute.sh'
+
+            }
+
+        }
+
+    stages {
+
+        stage('Builing Images') {
+
+            steps {
+                
                 // build images and pushes them to dockerhub
                 sh './scripts/build_images.sh'
 
@@ -16,7 +29,7 @@ pipeline {
 
         }
 
-        stage('Docker Swarm Init') {
+        stage('Initialising Docker Swarm') {
 
             steps {
                 
@@ -26,7 +39,7 @@ pipeline {
 
         }
 
-        stage('Deploy Stack') {
+        stage('Deploying Docker Stack') {
 
             steps {
                 
@@ -36,7 +49,7 @@ pipeline {
 
         }
 
-        stage('Update Stack') {
+        stage('Updating Stack') {
 
             steps {
                 
