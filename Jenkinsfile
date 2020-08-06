@@ -4,18 +4,6 @@ pipeline {
 
     stages {
 
-        stage('Installing Dependecies') {
-
-            steps {
-
-                sh 'chmod +x ./scripts/*.sh'
-                // build images and pushes them to dockerhub
-                sh './scripts/ansible_execute.sh'
-
-            }
-
-        }
-
         stage('Building Images') {
 
             steps {
@@ -43,6 +31,7 @@ pipeline {
             steps {
                 
                 sh './scripts/stack_deploy.sh'
+                sh './scripts/ansible_execute.sh'
 
             }
 
