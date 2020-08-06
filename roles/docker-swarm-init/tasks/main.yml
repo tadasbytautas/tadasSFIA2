@@ -4,6 +4,10 @@
   ignore_errors: true
   tags: swarm
 
+- name: Add user to Docker Group
+  shell: usermod -aG docker jenkins
+  tags: docker
+
 - name: Initialise Docker Swarm 
   shell: docker swarm init
   when: swarm_status.rc != 0
