@@ -6,7 +6,7 @@
 
 - name: Add user to Docker Group
   shell: usermod -aG docker jenkins
-  tags: docker
+  tags: swarm
 
 - name: Initialise Docker Swarm 
   shell: docker swarm init
@@ -33,6 +33,11 @@
   add_host:
     name: "manager_hostname"
     value: "{{ manager_hostname.stdout }}"
+
+- name: Docker Prune
+  add_host:
+    shell: docker system prune -f
+    tags: swarm
 
 # - name: add worker to manager node
 #   shell: echo {{ hostvars['token']['value'] }}
