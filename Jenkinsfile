@@ -2,19 +2,19 @@ pipeline {
 
     agent any
 
-    stages {
+    // stages {
 
-        stage('Installing Dependecies') {
+    //     stage('Installing Dependecies') {
 
-            steps {
+    //         steps {
 
-                sh 'chmod +x ./scripts/*.sh'
-                // build images and pushes them to dockerhub
-                sh './scripts/ansible_execute.sh'
+    //             sh 'chmod +x ./scripts/*.sh'
+    //             // build images and pushes them to dockerhub
+    //             sh './scripts/ansible_execute.sh'
 
-            }
+    //         }
 
-        }
+    //     }
 
     stages {
 
