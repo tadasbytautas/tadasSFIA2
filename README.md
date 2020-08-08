@@ -69,7 +69,7 @@ First Diagriam represnts idea of first implementation of CI pipeline prior proje
 
 ![](./images/CI1.png)
 
-Second diagram is focused more on SFIA2 end cicle of finished product. CI pipeline has Ansible as configaration management tool and docker swarm as orchestrator.
+Second diagram is focused more on SFIA2 end cicle of finished product. CI pipeline now has Ansible as configaration management tool and docker swarm as orchestrator.
 
 ![](./images/CI2.png)
 
