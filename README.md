@@ -65,15 +65,13 @@ One of the application requirements was to make sure data is persistent, for thi
 
 ## CI Pipeline  
 
-First Diagriam represnts idea of first implementation of CI pipeline. 
+First Diagriam represnts idea of first implementation of CI pipeline prior project development stage. 
 
-______________________________________________________
+![](./images/CI1.png)
 
-![First CI Pipeline](https://imgur.com/GKH1nr8.jpg)
+Second diagram is focused more on SFIA2 end cicle of finished product. CI pipeline has Ansible as configaration management tool and docker swarm as orchestrator.
 
-This second diagram is what the finalised CI Pipeline looks like. It includes the use of Ansible to configure my machines and Nginx which works as both a reverse proxy and load balancer. 
-
-![Final CI Pipeline](https://imgur.com/vaaHpLQ.jpg)
+![](./images/CI2.png)
 
 ##  App Design #1
 
