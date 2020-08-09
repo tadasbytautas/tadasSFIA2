@@ -76,6 +76,8 @@ Second picture was taken towards end of SFIA2 project which changed quite a bit.
 
 ## Git Branch Logs
 
+![](./images/git1.png)
+![](./images/git2.png)
 
 ## Database
 One of the application requirements was to make sure data is persistent, for this MySQL database was used. Simple table nickname_gen was created and utilised for this task. 
