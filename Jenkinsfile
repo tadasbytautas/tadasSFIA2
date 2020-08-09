@@ -20,8 +20,8 @@ pipeline {
 
             steps {
                 
-                sh './scripts/docker_swarm_init.sh'
                 sh './scripts/ansible.sh'
+                sh './scripts/docker_swarm_init.sh'               
 
             }
 
