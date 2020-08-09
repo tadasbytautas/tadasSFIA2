@@ -1,0 +1,43 @@
+- name: Docker Swarm Status
+  shell: docker node ls
+  register: swarm_status
+  ignore_errors: true
+  tags: swarm
+
+- name: Add user to Docker Group
+  shell: usermod -aG docker jenkins
+  tags: swarm
+
+- name: Initialise Docker Swarm 
+  shell: docker swarm init
+  when: swarm_status.rc != 0
+  run_once: true
+  tags: swarm
+
+- name: Manager Hostname
+  shell: hostname
+  register: manager_hostname
+  tags: swarm
+
+- name: Get Worker Node join-token
+  shell: docker swarm join-token --quiet worker
+  register: worker_token
+  tags: swarm
+
+- name: Output Woker Token
+  add_host: 
+    name: "token"
+    value: "{{ worker_token.stdout }}"
+
+- name: Output Manager Hostname
+  add_host:
+    name: "manager_hostname"
+    value: "{{ manager_hostname.stdout }}"
+
+- name: Removing unused Images/Containers/Networks  
+  shell: docker system prune -f
+  tags: swarm
+
+
+# - name: add worker to manager node
+#   shell: echo {{ hostvars['token']['value'] }}

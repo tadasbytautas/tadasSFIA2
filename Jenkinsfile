@@ -4,16 +4,44 @@ pipeline {
 
     stages {
 
-        stage('Build Images') {
+        stage('Building Images') {
 
             steps {
-
-                sh 'docker build -t tbytautas/service_1 ./Service_1'
-		        sh 'docker build -t tbytautas/service_2 ./Service_2'
-		        sh 'docker build -t tbytautas/service_3 ./Service_3'
-		        sh 'docker build -t tbytautas/service_4 ./Service_4'
+                
                 sh 'chmod +x ./scripts/*.sh'
-                sh './scripts/before_installation.sh'
+                // build images and pushes them to dockerhub
+                sh './scripts/build_images.sh'
+
+            }
+
+        }
+
+        stage('Initialising Docker Swarm') {
+
+            steps {
+                
+                sh './scripts/docker_swarm_init.sh'
+                sh './scripts/ansible.sh'
+
+            }
+
+        }
+
+        stage('Deploying Docker Stack') {
+
+            steps {
+                
+                sh './scripts/stack_deploy.sh'                
+
+            }
+
+        }
+
+        stage('Updating Stack') {
+
+            steps {
+                
+                sh './scripts/stack_update.sh'
 
             }
 

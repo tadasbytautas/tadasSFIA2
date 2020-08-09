@@ -3,3 +3,7 @@ venv/
 .vscode/
 
 */__pycache__
+
+.gitignore
+
+*/.dockerignore
