@@ -16,6 +16,7 @@ https://github.com/tadasbytautas/tadasSFIA2
 - Risk Assessment
 - Outstanding Issues
 - Improvements
+- Retrospective
 - Author
 
 ## Project Objective
@@ -31,15 +32,16 @@ The requirements of the project are as follows:
 
   
 ## Application Overview
+
 Application designed to create random nickname witch ustualised 4 different microservices.   
 
 Service 1 - is purely designed for user who using application. User has ability to create new nickname by pressing **Generate Nickname** button and see other nickanames that were generetrated previously.
 
 Service 2 - backend service which generates first part of the nickname. Application choses one random string out of 9 which will be used as part of full nickname.
 
-Service 3 - another backend service which does almost same as Service 2, only difference its genererating second part of the nickname.
+Service 3 - another backend service which does almost same thing as Service 2, only difference its genererating second part of the nickname.
 
-Service 4 - Combines output of Service 2 and Service 3. Service 1 sends GET request to Service 4 and represens outcome to the user on the main page.
+Service 4 - Combines output of Service 2 and Service 3. Service 1 sends GET request to Service 4 and returns combination to the user on the main page.
 
 <br>
 
@@ -54,13 +56,13 @@ For tracking project progress Trello board was used. Trello is free tool which I
 
 ![](./images/trello1.png)
 
-Second picture was taken towards end of SFIA2 project which changed quite a bit. MSCW principle was used to make sure application has all core functionaly as per project requirements. Personaly found no use to use sprints in this project as development process was done in paralel while doing training. 
+Second picture was taken towards end of SFIA2 project which changed quite a bit. MSCW principle was used to make sure application has core functionaly as per project requirements. Personaly found no use to use sprints in this project as development process was done in paralel while doing training and new technologies were added on the fly. 
 
 ![](./images/trello2.png)
 
 ## Tech Stack
 
-- Trello - Project Management
+- Trello Board - Project Management
 - Git / GitHub - Version Control System
 - Google Cloud MySQL - Hosting Database
 - Google Cloud WM - Hosting Linux Ubuntu Instance
@@ -76,7 +78,7 @@ Second picture was taken towards end of SFIA2 project which changed quite a bit.
 
 
 ## Database
-One of the application requirements was to make sure data is persistent, for this MySQL virtual machine was used. Simple table nickname_gen was created and utilised for this task. 
+One of the application requirements was to make sure data is persistent, for this MySQL database was used. Simple table nickname_gen was created and utilised for this task. 
 
 ![](./images/table.png)
 
@@ -92,26 +94,44 @@ Second diagram is focused more on SFIA2 end cicle of finished product. CI pipeli
 
 ##  Application Design 
 
-Application is quite simple design wise. Title of application is on the top, recentrly generated nickname visable between title and genreate nickname button and previously genererated nicknames populated below in descending order.
+Application is quite simple design wise. Title of application is on the top, recently generated nickname visable between title and genreate nickname button and previously genererated nicknames populated below in descending order.
 
 ![](./images/appscreen.png)
 
 ## Deployment
 
-The deployment of the application is fully automated by uttilising tools such as Jenkins, Ansible and Docker. As soon as code being pushed to github repository Jenkins pull the code and starts building docker images. This process is already preconfigured in a way that user should not be required to do any manual work.
+The deployment of the application is fully automated by uttilising tools such as Jenkins, Ansible and Docker. As soon as code being pushed to github repository Jenkins pulls the code from same repository using webhook and starts building docker images. This process is already preconfigured in a way that user should not be required to do any manual work.
 
 Process of Deployment:
 
 - Jenkins builds docker images of each microservice and pushes them to docker hub account.
-- Ansible playbook is being run which checks if docker is installed on manager and worker node, initiciates docker swarm if applicable. Removes unused images/containers/networks on manager and worker nodes.
-- Docker deploys application using docker compose. Configuration is preconfigured is such way that each image of each microservice and nginx would be deployed on the same network. For redundency and seemingless updates 3 replicas of each microservice being created.
-- Lastly for seemless update, docker pull fresh images from docker hub and updated current setup if any changes were done. Earlier generated 3 replicas of each microservice allow images being updated one by one which provides virtually no downtime for the user.  
+- Ansible playbook is being run which checks if docker is installed on Manager and Worker node, initiciates docker swarm if applicable. Removes unused images/containers/networks on manager and worker nodes.
+- Docker deploys application utilising docker-compose. Configuration is preconfigured is such way that each image of each microservice and nginx would be deployed on the same network. For redundency and seemingless updates 3 replicas of each microservice are being created.
+- Lastly for seemless update, docker pulls fresh images from docker hub and updates current setup if any changes were done. Earlier generated 3 replicas of each microservice allow images being updated one by one which provides virtually no downtime for the user however some old content can be visable for short period of time.  
 
 ![Successful Pipeline](./images/okCI.png)
 
 Failed builds due to errors in code or logical mistakes.
 
 ![Failed Pipeline](./images/errorCI.png)
+
+Some examples of encountered errors that were causing builds to fail.
+
+```
+wrapper script does not seem to be touching the log file in /var/lib/jenkins/workspace/SFIA2@2@tmp/durable-0abb33fa
+(JENKINS-48300: if on an extremely laggy filesystem, consider -Dorg.jenkinsci.plugins.durabletask.BourneShellScript.HEARTBEAT_CHECK_INTERVAL=86400)
+```
+
+```
+TASK [docker-swarm-init : Docker Prune] ****************************************
+fatal: [localhost]: FAILED! => {"changed": false, "msg": "name or hostname arg needs to be provided"}
+
+NO MORE HOSTS LEFT *************************************************************
+	to retry, use: --limit @/var/lib/jenkins/workspace/SFIA2/playbook.retry
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=13   changed=7    unreachable=0    failed=1   
+```
 
 ## Risk Assessment 
 
@@ -124,10 +144,14 @@ Failed builds due to errors in code or logical mistakes.
 
 ## Future Improvements
 
- - Adding some CSS would make application more eye catching.
- - More rigurous testing would serve beficial for overall health of applciation. 
- - Reconfiguration of Ansible would be advisible to make sure it fully suport ``` docker system prune ``` for worker node.
+- Adding some CSS would make application more eye catching.
+- More rigurous testing would serve beficial for overall health of applciation. 
+- Reconfiguration of Ansible would be advisible to make sure it fully suport ``` docker system prune ``` for worker node.
 
- ## Author
+## Retrospective
 
- #### Tadas Bytautas - QA DevOps and Cloud Consultant
+Overall project is fully functional however to expand on above issues and improvements more could be done for the project. I've particulary got fond of Docker and think it is fantastic tool which greatly helps deploy applications stress free and in fast maner. Had some issues at the begining while working on different machines which caused some headache trying to get all tools work with each other as they should. Configuration was handled by Ansible and 99% its all working, though some improvements could be done. It can get complicated to keep track of each step overall configuration therefor some sort UI would be great to have. All tools were used for this project follow logical secquince of instructions given in their respictive configuration files and if something working not as inteneded or not at all, it is more then likly logical mistake made by myself. Ansible can be sometimes confusing therefor some aditional training would serve beneficial.
+
+## Author
+
+#### Tadas Bytautas - QA DevOps and Cloud Consultant
