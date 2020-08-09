@@ -1,11 +1,14 @@
 # Nickname Generator
 
+https://github.com/tadasbytautas/tadasSFIA2
+
 ## Contents
 
 - Project Objective
 - Application Overview
 - Trello Board
 - Tech Stack
+- Git Branch Logs
 - Database Table
 - CI Pipeline
 - Application Design
@@ -44,13 +47,33 @@ Service 4 - Combines output of Service 2 and Service 3. Service 1 sends GET requ
 
 
 ## Trello Board
-For tracking project progress Trello board was used. Trello is free tool which I utilised on SFIA1 therefor it made sense to use it again. Picture below was taken at the beginning of the project.
+
+https://trello.com/b/I941VP4w/sfia2
+
+For tracking project progress Trello board was used. Trello is free tool which I utilised for SFIA1 project therefor it made sense to use it again. Picture below was taken at the beginning of the project.
 
 ![](./images/trello1.png)
 
-Second picture was taken towards end of SFIA2 project which changed quite a bit.
+Second picture was taken towards end of SFIA2 project which changed quite a bit. MSCW principle was used to make sure application has all core functionaly as per project requirements. Personaly found no use to use sprints in this project as development process was done in paralel while doing training. 
 
 ![](./images/trello2.png)
+
+## Tech Stack
+
+- Trello - Project Management
+- Git / GitHub - Version Control System
+- Google Cloud MySQL - Hosting Database
+- Google Cloud WM - Hosting Linux Ubuntu Instance
+- Docker - Conternisasion
+- Docker Swarm - Orchestration
+- Ansible - Configuration Management
+- Nginx - Web Server Functionality
+- Jenkins - Continues Integration Pipeline
+- Python 3 - Backend Functionality
+- Bootstrap 4 - Minimal Frontend Styling
+
+## Git Branch Logs
+
 
 ## Database
 One of the application requirements was to make sure data is persistent, for this MySQL virtual machine was used. Simple table nickname_gen was created and utilised for this task. 
@@ -78,13 +101,13 @@ Application is quite simple design wise. Title of application is on the top, rec
 The deployment of the application is fully automated by uttilising tools such as Jenkins, Ansible and Docker. As soon as code being pushed to github repository Jenkins pull the code and starts building docker images. This process is already preconfigured in a way that user should not be required to do any manual work.
 
 Process of Deployment:
+
 - Jenkins builds docker images of each microservice and pushes them to docker hub account.
 - Ansible playbook is being run which checks if docker is installed on manager and worker node, initiciates docker swarm if applicable. Removes unused images/containers/networks on manager and worker nodes.
 - Docker deploys application using docker compose. Configuration is preconfigured is such way that each image of each microservice and nginx would be deployed on the same network. For redundency and seemingless updates 3 replicas of each microservice being created.
 - Lastly for seemless update, docker pull fresh images from docker hub and updated current setup if any changes were done. Earlier generated 3 replicas of each microservice allow images being updated one by one which provides virtually no downtime for the user.  
 
 ![Successful Pipeline](./images/okCI.png)
-
 
 Failed builds due to errors in code or logical mistakes.
 
