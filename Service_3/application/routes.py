@@ -5,7 +5,7 @@ import random
 @app.route('/randomphrase', methods=['GET'])
 def ending():
 
-	# list = ['Cole','Ferenczy','Otonashi','Munster','Tepesh','Corvinus','Count','Petrova','Knight']
-	list = ['change on service 2a','change on service 2b','change on service 2c','change on service 2d','change on service 2e','change on service 2f','change on service 2g','change on service 2k','change on service 2l']
+	list = ['Cole','Ferenczy','Otonashi','Munster','Tepesh','Corvinus','Count','Petrova','Knight']
+	# list = ['change on service 2a','change on service 2b','change on service 2c','change on service 2d','change on service 2e','change on service 2f','change on service 2g','change on service 2k','change on service 2l']
 	
 	return list[random.randrange(8)]
