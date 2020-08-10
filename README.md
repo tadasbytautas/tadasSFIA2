@@ -77,6 +77,7 @@ Second picture was taken towards end of SFIA2 project which changed quite a bit.
 ## Git Branch Logs
 
 ![](./images/git1.png)
+
 ![](./images/git2.png)
 
 ## Database

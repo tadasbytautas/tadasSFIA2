@@ -6,5 +6,7 @@ import requests
 def sentence():
     beginning = requests.get('http://service_2:5001/randomphrase')
     ending = requests.get('http://service_3:5002/randomphrase')
-    response = beginning.text + " " + ending.text
+    response = beginning.text + " " + ending.text 
+    # uncomment below to show changes on service 4
+    # response = response + " change to service 4"
     return response
