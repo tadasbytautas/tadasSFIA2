@@ -8,5 +8,5 @@ def sentence():
     ending = requests.get('http://service_3:5002/randomphrase')
     response = beginning.text + " " + ending.text 
     # uncomment below to show changes on service 4
-    response = " Your Nickname: " + response
+    # response = " Your Nickname: " + response
     return response
