@@ -30,5 +30,5 @@
     state: started
 
 - name: Add User to Docker Group
-  shell: usermod -aG docker Marija
+  shell: usermod -aG docker Tadas
   tags: docker
